@@ -1,0 +1,20 @@
+.medal{
+    background-color: white;
+    border: solid;
+    border-width: 1px;
+    border-radius: 10px;
+    border-color: #d3d3d3;
+    text-align: center;
+
+}
+.img-medal{
+    padding: 4px;
+    border-radius: 10px;
+}
+.btn-medal{
+    width: 90%;
+    margin-bottom: 22px;
+}
+.btn-search{
+    text-align: center;
+}
