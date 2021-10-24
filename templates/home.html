@@ -1,0 +1,27 @@
+{%extends "base.html"%}
+{% block title %}
+Главная
+{% endblock %}
+{% block content %}
+{% load static %}
+          <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img class="img-fluid" src="{% static 'medals/brand/logo.jpeg' %}" alt="">
+        <div class="container">
+          <div class="carousel-caption text-start">
+            <h1>Планирование боевой подготовки</h1>
+            <p>Боевая подготовка является основополагающим видом подготовки в ВС РФ,<br>
+          обеспечивающим постоянную боевую готовность.</p>
+            <p><a href="" class="btn btn-lg btn-primary my-2">Расписание занятий</a>
+                {% if perms.shtat.view_officers %}
+                <a href="" class="btn btn-lg btn-secondary my-2">Штат</a>
+                {% endif %}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

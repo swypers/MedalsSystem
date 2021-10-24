@@ -1,0 +1,76 @@
+{%extends "base.html"%}
+{% block title %}
+    Файлы
+{% endblock %}
+{% block head %}
+<style>
+    .medal{
+        background-color: white;
+        border: solid;
+        border-width: 1px;
+        border-radius: 10px;
+        border-color: black;
+        text-align: center;
+
+    }
+    .img-medal{
+        padding: 4px;
+        border-radius: 10px;
+    }
+    .btn-medal{
+        width: 90%;
+        margin-bottom: 22px;
+    }
+</style>
+{% endblock %}
+{% block content %}
+<h1 class="display-4 text-center">Медали</h1>
+ <div class="col-md-12 mx-auto"> <!-- mx-auto центрует по оси икс -->
+     <div class="row">
+     {% for object in object_list %}
+         <div class="col-4 medal">
+             <img class="img-medal mx-auto" src="{{object.image.url}}" width="250" height="320" alt="">
+             <h4 class="">{{object.name}}</h4>
+             <a href="" class="btn btn-success btn-medal">Открыть</a>
+         </div>
+     {% endfor %}
+         </div>
+     <div class="pagination my-4"> <!-- my-4 добавляет отступ сверху -->
+    <ul class="pagination mx-auto">
+        {% if page_obj.has_previous %}
+            <li class="page-item"><a class="page-link" href="?page=1">1</a></li>
+            {% if page_obj.number > 3 %}
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">...</a>
+                </li>
+            {% endif %}
+            {% if page_obj.previous_page_number != 1 %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">
+                    {{ page_obj.previous_page_number }}
+                </a>
+            </li>
+            {% endif %}
+        {% endif %}
+
+        <li class="page-item"><a class="page-link">{{ page_obj.number }}</a></li>
+
+        {% if page_obj.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.next_page_number }}">
+                    {{ page_obj.next_page_number }}
+                </a>
+            </li>
+
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">
+                    Последняя
+                </a>
+            </li>
+        {% endif %}
+
+
+    </ul>
+    </div>
+ </div>
+{% endblock %}
